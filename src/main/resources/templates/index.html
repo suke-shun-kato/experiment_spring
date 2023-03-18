@@ -2,16 +2,21 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>[[${title}]]</title>
+    <title>レシピ一覧</title>
 </head>
 <body>
-    <h1>aaaffffaa</h1>
-    <h2>[[${title}]]</h2>
-    <ul>
-        <li th:each="user : ${users}">[[${user.name}]]</li>
-    </ul>
-    <div>
-        <p><a href="/create">追加ページへ</a></p>
-    </div>
+<table>
+    <tbody>
+    <tr th:each="recipe : ${recipes}">
+        <td>[[${recipe.title}]]</td>
+        <td>[[${recipe.imageUrl}]]</td>
+        <td>[[${recipe.description}]]</td>
+    </tr>
+    </tbody>
+</table>
+<div>
+    <!--/* @{}はリンクURL式。URLを生成するときに使う。 */-->
+    <p><a th:href="@{/create}">新規作成</a></p>
+</div>
 </body>
 </html>

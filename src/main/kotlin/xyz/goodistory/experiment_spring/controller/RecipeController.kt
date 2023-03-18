@@ -17,8 +17,7 @@ class RecipeController {
     @GetMapping("/")
     fun index(model: Model): String {
         val recipes = recipeRepository.findAll()
-
-        model["title"] = "Blog"
+        model.addAttribute("recipes", recipes)
         return "index"
     }
 
