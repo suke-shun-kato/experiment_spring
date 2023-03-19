@@ -17,16 +17,21 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    // Spring本体
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    // SpringのORM
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    // テンプレートエンジン
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    // Springのログイン・セキュリティー関連
+    implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
     implementation 'org.jetbrains.kotlin:kotlin-reflect'
     runtimeOnly 'com.h2database:h2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-tasks.withType(KotlinCompile) {
+tasks.withType(KotlinCompile).configureEach {
     kotlinOptions {
         freeCompilerArgs = ['-Xjsr305=strict']
         jvmTarget = '17'

@@ -1,5 +1,17 @@
 # experiment_spring
 
+# 使用バージョン
+
+|                  | バージョン | build.gradle 記載場所                      |
+|------------------|-------|----------------------------------------|
+| Spring boot      | 3.0.4 | `plugins` の `org.springframework.boot` |
+| Spring Framework | 6.0.6 |                                        |
+| Java             | 17    | `version` ？                            |
+| Tomcat           | 10    |                                        |
+
+## 参考リンク
+[Qiita - Spring FrameworkとSpring Bootのいろんな対応表](https://qiita.com/gate9/items/7351557829d7e1e668e9)
+
 # 参考リンク
 ## 初心者向けの記事
 - [Qiita - Spring BootでサーバーサイドKotlin入門](https://qiita.com/kawasaki_dev/items/1a188878eb6928880256)
@@ -7,6 +19,7 @@
 ## Spring
 - [Spring公式](https://spring.pleiades.io/)
 - [Spring公式ガイド - Kotlin で Spring Boot Web アプリケーションの作成](https://spring.pleiades.io/guides/tutorials/spring-boot-kotlin/)
+- [Qiita - Spring Security 5.4〜6.0でセキュリティ設定の書き方が大幅に変わる件](https://qiita.com/suke_masa/items/908805dd45df08ba28d8)
 
 ## Thymeleaf
 - [Thymeleaf公式](https://www.thymeleaf.org/index.html)
