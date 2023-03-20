@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>新規作成</title>
+</head>
+<body>
+<div>
+    <h1>新規作成</h1>
+    <form th:with="url=${recipe} ? '/' + ${recipe.id}  + '/update': '/'" th:action="@{${url}}" th:method="${recipe} ? 'POST' : 'POST'">
+        <div>
+            <label for="title">タイトル:</label>
+            <!--/* recipe の変数が存在すれば  recipe.title を表示 */-->
+            <input type="text" id="title" name="title" th:value="${recipe} ? ${recipe.title}">
+        </div>
+        <div>
+            <label for="imageUrl">画像URL:</label>
+            <input type="text" id="imageUrl" name="imageUrl" th:value="${recipe} ? ${recipe.imageUrl}">
+        </div>
+        <div>
+            <label for="description">レシピ本体:</label>
+            <input type="text" id="description" name="description" th:value="${recipe} ? ${recipe.description}">
+        </div>
+        <div>
+            <button type="submit">作成</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

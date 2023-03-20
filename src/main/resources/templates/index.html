@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>レシピ一覧</title>
+</head>
+<body>
+<table>
+    <tbody>
+    <tr th:each="recipe : ${recipes}">
+        <td>[[${recipe.title}]]</td>
+        <td>[[${recipe.imageUrl}]]</td>
+        <td>[[${recipe.description}]]</td>
+        <td><a th:href="@{${recipe.id} + '/edit'}">編集</a></td>
+        <td>
+            <form th:action="@{'/' + ${recipe.id} + '/delete'}" th:method="POST">
+                <button type="submit">削除</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div>
+    <!--/* @{}はリンクURL式。URLを生成するときに使う。 */-->
+    <p><a th:href="@{/create}">新規作成</a></p>
+</div>
+</body>
+</html>
