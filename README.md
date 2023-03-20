@@ -1,4 +1,6 @@
-# experiment_spring
+# はじめに
+
+Springの勉強用に作成したものです
 
 # 使用バージョン
 
@@ -9,11 +11,10 @@
 | Java             | 17    | `version` ？                            |
 | Tomcat           | 10    |                                        |
 
-## 参考リンク
-[Qiita - Spring FrameworkとSpring Bootのいろんな対応表](https://qiita.com/gate9/items/7351557829d7e1e668e9)
+[Qiita - Spring FrameworkとSpring Bootのいろんな対応表](https://qiita.com/gate9/items/7351557829d7e1e668e9) を参考
 
-# サイト
-- [ローカルTOP](http://127.0.0.1:8080)
+# 開発用URL
+- [ローカル TOP](http://127.0.0.1:8080)
 - [H2コンソール](http://127.0.0.1:8080/h2-console)
 
 # 参考リンク

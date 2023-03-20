@@ -1,4 +1,4 @@
-create table "recipes"
+create table IF NOT EXISTS "recipes"
 (
     "id"          INTEGER auto_increment primary key,
     "description" CHARACTER VARYING(255) NOT NULL,
