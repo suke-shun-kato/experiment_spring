@@ -12,6 +12,10 @@
 ## 参考リンク
 [Qiita - Spring FrameworkとSpring Bootのいろんな対応表](https://qiita.com/gate9/items/7351557829d7e1e668e9)
 
+# サイト
+- [ローカルTOP](http://127.0.0.1:8080)
+- [H2コンソール](http://127.0.0.1:8080/h2-console)
+
 # 参考リンク
 ## 初心者向けの記事
 - [Qiita - Spring BootでサーバーサイドKotlin入門](https://qiita.com/kawasaki_dev/items/1a188878eb6928880256)
