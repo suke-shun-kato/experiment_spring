@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!--/* CSS読込 */-->
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+  <link rel="stylesheet" th:href="@{/css/login/login.css}">
+  <!--/* JS読込 */-->
+  <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+<!--  <script th:src="@{/webjars/jquery/js/jquery.min.js}" defer></script>-->
+  <title>ログイン</title>
+</head>
+<body class="bg-light">
+<div>
+  <form method="post" th:action="@{/login}" class="form-login">
+    <h2 class="text-center">ログイン</h2>
+    <p th:if="${session['SPRING_SECURITY_LAST_EXCEPTION']} != null"
+       th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}"
+       class="text-danger">
+      ログインエラーメッセージ
+    </p>
+    <!--/* ユーザーID */-->
+    <div class="mb-3">
+      <label for="userId" class="form-label">ユーザーID</label>
+      <input type="text" class="form-control"  name="userId" id="userId"/>
+    </div>
+    <!--/* パスワード */-->
+    <div class="mb-3">
+      <label for="password" class="form-label">パスワード</label>
+      <input type="text" class="form-control" name="password" id="password"/>
+    </div>
+    <div class="text-center">
+      <input type="submit" value="ログイン" class="btn btn-primary text-center" />
+    </div>
+  </form>
+  <div class="text-center mb-3">
+    <a th:href="@{/user/signup}">新規登録はこちら</a>
+  </div>
+</div>
+</body>
+</html>

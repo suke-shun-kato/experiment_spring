@@ -1,5 +1,6 @@
 package xyz.goodistory.experiment_spring.config
 
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
@@ -22,17 +23,24 @@ class SecurityConfig {
             // 認証の設定
             .authorizeHttpRequests { auth ->
                 // どのリクエストでも認証OK（パスワード認証不要）
-                auth.anyRequest().permitAll()
-//                auth.requestMatchers(AntPathRequestMatcher.antMatcher(H2_PATH)).permitAll()
+//                auth.anyRequest().permitAll()
+                auth
+                    // H2のコンソールを認証なしで読み込めるようにする
+                    .requestMatchers(AntPathRequestMatcher.antMatcher(H2_PATH)).permitAll()
+                    // loginページを認証なしで読み込めるようにする
+                    .requestMatchers("/login").permitAll()
+                    // CSSやJSファイルを認証なしで読み込めるようにする
+                    .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
             }
 
             // HTTP Headerの設定
             .headers { headers ->
+                // H2コンソール用
                 headers.frameOptions().disable() }
 
             // CSRFの設定
             .csrf { csrf ->
-                // 引数のCSRFの設定を無視する
+                // 引数のCSRFの設定を無視する。H2コンソール用。
                 csrf.ignoringRequestMatchers(
                     AntPathRequestMatcher.antMatcher(H2_PATH))
             }
