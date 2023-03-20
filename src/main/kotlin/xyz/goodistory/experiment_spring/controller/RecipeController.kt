@@ -31,7 +31,7 @@ class RecipeController {
     /**
      * 新規作成処理
      */
-    @PostMapping("/store")
+    @PostMapping("/")
     fun store(@RequestParam title: String, @RequestParam imageUrl: String, @RequestParam description: String): String {
         recipeRepository.save(RecipeEntity(0, title, imageUrl, description))
 
@@ -49,4 +49,25 @@ class RecipeController {
         model.addAttribute("recipe", recipe)
         return "create_edit"
     }
+
+    /**
+     * 更新処理
+     */
+    @PostMapping("/{id}/update")
+    fun update(@PathVariable("id") id: String,
+               @RequestParam title: String, @RequestParam imageUrl: String, @RequestParam description: String,
+               model: Model)
+    : String {
+        val recipeEntity: RecipeEntity = recipeRepository.findById(id.toInt()).orElse(null)
+            ?: return "redirect:/";
+
+        recipeEntity.title = title
+        recipeEntity.imageUrl = imageUrl
+        recipeEntity.description = description
+
+        recipeRepository.save(recipeEntity)
+
+        return "redirect:/"
+    }
+
 }

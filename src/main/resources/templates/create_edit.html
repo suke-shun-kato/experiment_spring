@@ -7,7 +7,7 @@
 <body>
 <div>
     <h1>新規作成</h1>
-    <form th:action="@{/store}" method="post">
+    <form th:with="url=${recipe} ? '/' + ${recipe.id}  + '/update': '/'" th:action="@{${url}}" th:method="${recipe} ? 'POST' : 'POST'">
         <div>
             <label for="title">タイトル:</label>
             <!--/* recipe の変数が存在すれば  recipe.title を表示 */-->
