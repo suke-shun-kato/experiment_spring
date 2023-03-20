@@ -44,7 +44,7 @@ class RecipeController {
     @GetMapping("/{id}/edit")
     fun edit(@PathVariable("id") id: String, model: Model): String {
         val recipe: RecipeEntity = recipeRepository.findById(id.toInt()).orElse(null)
-            ?: return "redirect:/";
+            ?: return "redirect:/"
 
         model.addAttribute("recipe", recipe)
         return "create_edit"
@@ -59,13 +59,27 @@ class RecipeController {
                model: Model)
     : String {
         val recipeEntity: RecipeEntity = recipeRepository.findById(id.toInt()).orElse(null)
-            ?: return "redirect:/";
+            ?: return "redirect:/"
 
         recipeEntity.title = title
         recipeEntity.imageUrl = imageUrl
         recipeEntity.description = description
 
         recipeRepository.save(recipeEntity)
+
+        return "redirect:/"
+    }
+
+    /**
+     * 削除処理
+     */
+    @PostMapping("/{id}/delete")
+    fun destroy(@PathVariable("id") id: String) : String {
+
+        val recipeEntity: RecipeEntity = recipeRepository.findById(id.toInt()).orElse(null)
+            ?: return "redirect:/"
+
+        recipeRepository.delete(recipeEntity)
 
         return "redirect:/"
     }

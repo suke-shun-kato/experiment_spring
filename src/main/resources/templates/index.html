@@ -12,6 +12,11 @@
         <td>[[${recipe.imageUrl}]]</td>
         <td>[[${recipe.description}]]</td>
         <td><a th:href="@{${recipe.id} + '/edit'}">編集</a></td>
+        <td>
+            <form th:action="@{'/' + ${recipe.id} + '/delete'}" th:method="POST">
+                <button type="submit">削除</button>
+            </form>
+        </td>
     </tr>
     </tbody>
 </table>
