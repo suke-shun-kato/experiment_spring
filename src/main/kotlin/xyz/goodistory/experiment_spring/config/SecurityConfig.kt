@@ -23,7 +23,7 @@ class SecurityConfig {
             .authorizeHttpRequests { auth ->
                 // どのリクエストでも認証OK（パスワード認証不要）
                 auth.anyRequest().permitAll()
-//                    .requestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")).permitAll()
+//                auth.requestMatchers(AntPathRequestMatcher.antMatcher(H2_PATH)).permitAll()
             }
 
             // HTTP Headerの設定

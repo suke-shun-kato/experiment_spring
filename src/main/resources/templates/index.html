@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
 <head>
     <meta charset="UTF-8">
     <title>レシピ一覧</title>
@@ -11,9 +11,9 @@
         <td>[[${recipe.title}]]</td>
         <td>[[${recipe.imageUrl}]]</td>
         <td>[[${recipe.description}]]</td>
-        <td><a th:href="@{${recipe.id} + '/edit'}">編集</a></td>
+        <td><a th:href="'/recipes/' + @{${recipe.id} + '/edit'}">編集</a></td>
         <td>
-            <form th:action="@{'/' + ${recipe.id} + '/delete'}" th:method="POST">
+            <form th:action="@{'/recipes/' + ${recipe.id} + '/delete'}" th:method="POST">
                 <button type="submit">削除</button>
             </form>
         </td>
@@ -22,7 +22,7 @@
 </table>
 <div>
     <!--/* @{}はリンクURL式。URLを生成するときに使う。 */-->
-    <p><a th:href="@{/create}">新規作成</a></p>
+    <p><a th:href="@{'/recipes/create'}">新規作成</a></p>
 </div>
 </body>
 </html>

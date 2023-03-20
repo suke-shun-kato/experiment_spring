@@ -1,13 +1,20 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--/* CSS読込 */-->
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <!--/* JS読込 */-->
+    <script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+    <!--/* タイトル */-->
     <title>新規作成</title>
 </head>
 <body>
 <div>
     <h1>新規作成</h1>
-    <form th:with="url=${recipe} ? '/' + ${recipe.id}  + '/update': '/'" th:action="@{${url}}" th:method="${recipe} ? 'POST' : 'POST'">
+    <form th:with="url=${recipe} ? '/recipes/' + ${recipe.id}  + '/update': '/recipes'" th:action="@{${url}}" th:method="post">
         <div>
             <label for="title">タイトル:</label>
             <!--/* recipe の変数が存在すれば  recipe.title を表示 */-->
