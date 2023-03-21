@@ -29,6 +29,8 @@ class SecurityConfig {
                     .requestMatchers(AntPathRequestMatcher.antMatcher(H2_PATH)).permitAll()
                     // loginページを認証なしで読み込めるようにする
                     .requestMatchers("/login").permitAll()
+                    // ユーザー登録ページ
+                    .requestMatchers("/user/signup").permitAll()
                     // CSSやJSファイルを認証なしで読み込めるようにする
                     .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
             }
