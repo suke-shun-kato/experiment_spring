@@ -14,8 +14,9 @@ Springの勉強用に作成したものです
 [Qiita - Spring FrameworkとSpring Bootのいろんな対応表](https://qiita.com/gate9/items/7351557829d7e1e668e9) を参考
 
 # 開発用URL
-- [ローカル TOP](http://127.0.0.1:8080)
-- [H2コンソール](http://127.0.0.1:8080/h2-console)
+- http://127.0.0.1:8080 ・・・ローカル TOP
+- http://127.0.0.1:8080/login ・・・ログインページ
+- http://127.0.0.1:8080/h2-console ・・・H2コンソール
 
 # 参考リンク
 ## 初心者向けの記事

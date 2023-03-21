@@ -19,6 +19,8 @@ repositories {
 dependencies {
     // Spring本体
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    // Springのバリデーション
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
     // SpringのORM
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     // テンプレートエンジン

@@ -2,7 +2,10 @@ package xyz.goodistory.experiment_spring.controller
 
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
+import org.springframework.validation.BindingResult
+import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import xyz.goodistory.experiment_spring.form.SignupForm
@@ -15,8 +18,7 @@ class SignupController {
      * ユーザー登録画面
      */
     @GetMapping("/signup")
-    fun create(model: Model, form: SignupForm): String {
-        model.addAttribute("signupForm", form)
+    fun create(model: Model, @ModelAttribute form: SignupForm): String {
 
         return "user/signup"
     }
@@ -25,7 +27,12 @@ class SignupController {
      * ユーザー登録処理
      */
     @PostMapping("/signup")
-    fun store(form: SignupForm): String {
+//    fun store(model: Model, @ModelAttribute @Validated form: SignupForm, bindingResult: BindingResult): String {
+    fun store(model: Model, @ModelAttribute form: SignupForm, bindingResult: BindingResult): String {
+
+        if (bindingResult.hasErrors()) {
+            return create(model, form)
+        }
 
         return "redirect:/login"
     }

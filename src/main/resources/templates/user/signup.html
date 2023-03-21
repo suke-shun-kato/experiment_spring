@@ -17,13 +17,25 @@
 
         <!--/* ユーザーID */-->
         <div class="mb-3">
-            <label for="userId" class="form-label">ユーザーID</label><!--/* */-->
-            <input type="text" class="form-control" th:field="*{userId}">
+            <label for="email" class="form-label">E-mail</label>
+            <!--/* th:field はid, name, valueの値を一度に指定できる。id, nameは指定した変数名の値、valueは変数の値になる。 */-->
+            <!--/* th:errorclass は指定フィールドにエラーがあるとき、class属性に値（ここではis-invalid）を追加。 */-->
+            <input type="text" class="form-control" th:field="*{email}" th:errorclass="is-invalid">
+            <!--/* th:errors は指定ファイールドにエラーがあるときに、エラーメッセージを表示する（エラーない場合は<div>すら表示されない）
+            表示するエラーメッセージはpropertiesファイルに記載したものが表示される。 */-->
+            <div class="invalid-feedback" th:errors="*{email}"></div>
         </div>
         <!--/* パスワード */-->
         <div class="mb-3">
             <label for="password" class="form-label">パスワード</label>
-            <input type="text" class="form-control" th:field="*{password}">
+            <input type="text" class="form-control" th:field="*{password}" th:errorclass="is-invalid">
+            <div class="invalid-feedback" th:errors="*{password}"></div>
+        </div>
+        <!--/* 年齢 */-->
+        <div class="mb-3">
+            <label for="age" class="form-label">年齢</label>
+            <input type="text" class="form-control" th:field="*{age}" th:errorclass="is-invalid">
+            <div class="invalid-feedback" th:errors="*{age}"></div>
         </div>
         <input type="submit" value="ユーザー登録" class="btn btn-primary w-100 mt-3">
     </form>
