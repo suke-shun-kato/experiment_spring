@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
+import xyz.goodistory.experiment_spring.form.GroupOrder
 import xyz.goodistory.experiment_spring.form.SignupForm
 
 @Controller
@@ -28,7 +29,10 @@ class SignupController {
      */
     @PostMapping("/signup")
     // BindingResult は フォームの後に引数を書かないといけない
-    fun store(model: Model, @ModelAttribute @Validated signupForm: SignupForm, bindingResult: BindingResult): String {
+    fun store(
+        model: Model,
+        @ModelAttribute @Validated(GroupOrder::class) signupForm: SignupForm,
+        bindingResult: BindingResult): String {
 
         if (bindingResult.hasErrors()) {
             return create(model, signupForm)
