@@ -27,11 +27,11 @@ class SignupController {
      * ユーザー登録処理
      */
     @PostMapping("/signup")
-//    fun store(model: Model, @ModelAttribute @Validated form: SignupForm, bindingResult: BindingResult): String {
-    fun store(model: Model, @ModelAttribute form: SignupForm, bindingResult: BindingResult): String {
+    // BindingResult は フォームの後に引数を書かないといけない
+    fun store(model: Model, @ModelAttribute @Validated signupForm: SignupForm, bindingResult: BindingResult): String {
 
         if (bindingResult.hasErrors()) {
-            return create(model, form)
+            return create(model, signupForm)
         }
 
         return "redirect:/login"

@@ -17,7 +17,9 @@
 
         <!--/* ユーザーID */-->
         <div class="mb-3">
-            <label for="email" class="form-label">E-mail</label>
+            <!--/* th:text="#{email} は文字列にpropertiesファイルに記載した文字列を表示する。
+            詳しくいうと、application.properties の spring.messages.basename で設定した変数の値を表示する。 */-->
+            <label for="email" class="form-label" th:text="#{email}"></label>
             <!--/* th:field はid, name, valueの値を一度に指定できる。id, nameは指定した変数名の値、valueは変数の値になる。 */-->
             <!--/* th:errorclass は指定フィールドにエラーがあるとき、class属性に値（ここではis-invalid）を追加。 */-->
             <input type="text" class="form-control" th:field="*{email}" th:errorclass="is-invalid">
@@ -27,13 +29,13 @@
         </div>
         <!--/* パスワード */-->
         <div class="mb-3">
-            <label for="password" class="form-label">パスワード</label>
+            <label for="password" th:text="#{password}" class="form-label"></label>
             <input type="text" class="form-control" th:field="*{password}" th:errorclass="is-invalid">
             <div class="invalid-feedback" th:errors="*{password}"></div>
         </div>
         <!--/* 年齢 */-->
         <div class="mb-3">
-            <label for="age" class="form-label">年齢</label>
+            <label for="age" th:text="#{age}" class="form-label">年齢</label>
             <input type="text" class="form-control" th:field="*{age}" th:errorclass="is-invalid">
             <div class="invalid-feedback" th:errors="*{age}"></div>
         </div>
