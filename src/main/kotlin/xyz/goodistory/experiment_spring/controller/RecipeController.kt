@@ -8,12 +8,19 @@ import xyz.goodistory.experiment_spring.entity.RecipeEntity
 import xyz.goodistory.experiment_spring.repository.RecipeRepository
 
 @Controller
-//@RequestMapping("/recipe")
+@RequestMapping("/recipes")
 class RecipeController {
+    companion object {
+        const val REDIRECT_TOP = "redirect:/recipes"
+    }
+
     @Autowired
     lateinit var recipeRepository: RecipeRepository
 
-    @GetMapping("/")
+    /**
+     * リスト
+     */
+    @GetMapping("")
     fun index(model: Model): String {
         val recipes = recipeRepository.findAll()
         model.addAttribute("recipes", recipes)
@@ -31,11 +38,11 @@ class RecipeController {
     /**
      * 新規作成処理
      */
-    @PostMapping("/")
+    @PostMapping("")
     fun store(@RequestParam title: String, @RequestParam imageUrl: String, @RequestParam description: String): String {
         recipeRepository.save(RecipeEntity(0, title, imageUrl, description))
 
-        return "redirect:/"
+        return REDIRECT_TOP
     }
 
     /**
@@ -44,7 +51,7 @@ class RecipeController {
     @GetMapping("/{id}/edit")
     fun edit(@PathVariable("id") id: String, model: Model): String {
         val recipe: RecipeEntity = recipeRepository.findById(id.toInt()).orElse(null)
-            ?: return "redirect:/"
+            ?: return REDIRECT_TOP
 
         model.addAttribute("recipe", recipe)
         return "create_edit"
@@ -59,7 +66,7 @@ class RecipeController {
                model: Model)
     : String {
         val recipeEntity: RecipeEntity = recipeRepository.findById(id.toInt()).orElse(null)
-            ?: return "redirect:/"
+            ?: return REDIRECT_TOP
 
         recipeEntity.title = title
         recipeEntity.imageUrl = imageUrl
@@ -67,7 +74,7 @@ class RecipeController {
 
         recipeRepository.save(recipeEntity)
 
-        return "redirect:/"
+        return REDIRECT_TOP
     }
 
     /**
@@ -77,11 +84,11 @@ class RecipeController {
     fun destroy(@PathVariable("id") id: String) : String {
 
         val recipeEntity: RecipeEntity = recipeRepository.findById(id.toInt()).orElse(null)
-            ?: return "redirect:/"
+            ?: return REDIRECT_TOP
 
         recipeRepository.delete(recipeEntity)
 
-        return "redirect:/"
+        return REDIRECT_TOP
     }
 
 }
